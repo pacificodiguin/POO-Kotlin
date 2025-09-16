@@ -25,11 +25,8 @@ Aqui está uma lista dos principais projetos que você encontrará neste reposit
 * **[Controle de Tarefas](./POO-II/Projetos/Tarefas)**
     * **Descrição:** Um gerenciador de tarefas diárias via console. Permite criar, listar (por prioridade, abertas, encerradas), encerrar e excluir tarefas, com todos os dados salvos em um banco MySQL.
 
-*(**Observação:** Adicione ou remova projetos conforme você os desenvolve. Certifique-se de que o nome da pasta no link está correto!)*
-
 ### POO I - Programação Orientada a Objetos I
 
-* *Nenhum projeto adicionado ainda. (Você pode adicionar seus projetos de POO I aqui)*
 
 ---
 
@@ -58,8 +55,6 @@ As principais ferramentas e tecnologias usadas nos projetos deste repositório s
 
 ## 👨‍💻 Autor
 
-**[Seu Nome Completo]**
+**[João Henrique Pacifico Maia]**
 
 -   **GitHub:** [@pacificodiguin](https://github.com/pacificodiguin)
-
-*(Não se esqueça de substituir "[Seu Nome Completo]" pelo seu nome!)*
