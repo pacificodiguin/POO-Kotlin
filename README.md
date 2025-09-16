@@ -25,9 +25,6 @@ Aqui está uma lista dos principais projetos que você encontrará neste reposit
 * **[Controle de Tarefas](./POO-II/Projetos/Tarefas)**
     * **Descrição:** Um gerenciador de tarefas diárias via console. Permite criar, listar (por prioridade, abertas, encerradas), encerrar e excluir tarefas, com todos os dados salvos em um banco MySQL.
 
-### POO I - Programação Orientada a Objetos I
-
-
 ---
 
 ## 🛠️ Tecnologias Utilizadas
