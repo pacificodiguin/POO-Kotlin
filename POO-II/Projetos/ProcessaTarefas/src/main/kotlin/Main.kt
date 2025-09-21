@@ -1,3 +1,4 @@
+// Código sem validação
 /*
 import java.sql.Connection
 import java.sql.DriverManager
@@ -80,9 +81,9 @@ private fun criaTabela(conexao: Connection) {
     println("Tabela 'tarefas' criada com sucesso ou já existente.\n")
 }
 
-
 private fun insereTarefa(conexao: Connection, ler: Scanner) {
-    ler.nextLine()
+
+    ler.nextLine() // Limpa o buffer do scanner
     println("\n--- Inserir Nova Tarefa ---")
     print("Nome da tarefa: ")
     val nome = ler.nextLine()
@@ -90,8 +91,21 @@ private fun insereTarefa(conexao: Connection, ler: Scanner) {
     val detalhes = ler.nextLine()
     print("Responsável: ")
     val responsavel = ler.nextLine()
-    print("Prioridade (1 a 5): ")
-    val prioridade = ler.nextInt()
+
+    // --- VALIDAÇÃO DA PRIORIDADE (MANTIDA) ---
+    var prioridade: Int
+    while (true) {
+        print("Prioridade (1 a 5): ")
+        val inputPrioridade = ler.nextInt()
+        // Verifica se o número está no intervalo de 1 a 5
+        if (inputPrioridade in 1..5) {
+            prioridade = inputPrioridade
+            break // Sai do loop se o valor for válido
+        } else {
+            println("Valor inválido! A prioridade deve ser um número entre 1 e 5. Tente novamente.")
+        }
+    }
+    // --- FIM DA VALIDAÇÃO ---
 
     val sql = "INSERT INTO tarefas (nome, detalhes, responsavel, prioridade, encerrada) VALUES (?, ?, ?, ?, ?)"
     conexao.prepareStatement(sql).use { statement ->
@@ -186,6 +200,8 @@ private fun listarTarefas(conexao: Connection, sql: String) {
     }
 }
 */
+
+// Código com validação
 
 import java.sql.Connection
 import java.sql.DriverManager
@@ -289,8 +305,21 @@ private fun insereTarefa(conexao: Connection, ler: Scanner) {
         val detalhes = ler.nextLine()
         print("Responsável: ")
         val responsavel = ler.nextLine()
-        print("Prioridade (1 a 5): ")
-        val prioridade = ler.nextInt()
+
+        // --- VALIDAÇÃO DA PRIORIDADE ---
+        var prioridade: Int
+        while (true) {
+            print("Prioridade (1 a 5): ")
+            val inputPrioridade = ler.nextInt()
+            // Verifica se o número está no intervalo de 1 a 5
+            if (inputPrioridade in 1..5) {
+                prioridade = inputPrioridade
+                break // Sai do loop se o valor for válido
+            } else {
+                println("Valor inválido! A prioridade deve ser um número entre 1 e 5. Tente novamente.")
+            }
+        }
+        // --- FIM DA VALIDAÇÃO ---
 
         val sql = "INSERT INTO tarefas (nome, detalhes, responsavel, prioridade, encerrada) VALUES (?, ?, ?, ?, ?)"
         conexao.prepareStatement(sql).use { statement ->
@@ -298,12 +327,12 @@ private fun insereTarefa(conexao: Connection, ler: Scanner) {
             statement.setString(2, detalhes)
             statement.setString(3, responsavel)
             statement.setInt(4, prioridade)
-            statement.setBoolean(5, false) // [cite: 97]
+            statement.setBoolean(5, false)
             statement.executeUpdate()
             println("Tarefa '$nome' inserida com sucesso!\n")
         }
     } catch (e: Exception) {
-        println("Erro ao inserir tarefa.")
+        println("Erro ao inserir tarefa. Verifique se digitou os dados corretamente.")
         e.printStackTrace()
     }
 }
